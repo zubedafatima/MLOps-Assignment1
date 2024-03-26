@@ -15,11 +15,3 @@ jobs:
         run: pip install flake8
       - name: Run Flake8
         run: flake8
-      - name: Create pull request
-        if: ${{ success() }}
-        uses: peter-evans/create-pull-request@v3
-        with:
-          branch: test
-          title: Automated pull request to merge dev into test
-          body: Automated pull request created after successful code quality check to merge dev into test.
-          base: test
