@@ -22,4 +22,4 @@ jobs:
           branch: test
           title: Automated pull request to merge dev into test
           body: Automated pull request created after successful code quality check to merge dev into test.
-          base: test
+          base: test
