@@ -28,3 +28,5 @@ print("Model Score: ", lr.score(X_train, y_train))
 # Save the trained model to a file
 with open('model.pkl', 'wb') as file:
     pickle.dump(lr, file)
+
+print("Model created and saved into pickle file")
