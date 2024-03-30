@@ -1,3 +1,4 @@
+
 import pickle
 import pandas as pd
 from sklearn.model_selection import train_test_split
@@ -29,3 +30,4 @@ with open('model.pkl', 'wb') as file:
     pickle.dump(lr, file)
 
 print("Model created and saved into pickle file")
+
