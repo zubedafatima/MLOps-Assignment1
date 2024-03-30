@@ -8,8 +8,7 @@ data = pd.read_csv('Student_Performance.csv')
 
 # Map 'Yes' and 'No' to 1 and 0 in the 'Extracurricular Activities' column
 data['Extracurricular Activities'] = data['Extracurricular Activities'].map(
-    {'Yes': 1, 'No': 0}
-    )
+    {'Yes': 1, 'No': 0})
 
 # Split the data into features (X) and target variable (y)
 X = data.drop(columns=['Performance Index'])
