@@ -1,0 +1,25 @@
+name: Code Quality Check
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  code_quality:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Install dependencies
+        run: pip install flake8
+      - name: Run Flake8
+        run: flake8
+      - name: Create pull request
+        if: ${{ success() }}
+        uses: peter-evans/create-pull-request@v3
+        with:
+          branch: test
+          title: Automated pull request to merge dev into test
+          body: Automated pull request created after successful code quality check to merge dev into test.
+          base: test
