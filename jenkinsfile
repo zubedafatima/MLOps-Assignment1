@@ -1,0 +1,41 @@
+pipeline {
+    agent any
+    
+    stages {
+        stage('Test') {
+            steps {
+                // Run automated tests
+                sh 'pytest'
+            }
+        }
+        stage('Build Docker Image') {
+            when {
+                // Execute this stage only if the branch is master
+                branch 'master'
+            }
+            steps {
+                // Checkout the repository
+                checkout scm
+                
+                // Build Docker image using Dockerfile
+                script {
+                    docker.build('my_model_image:latest')
+                }
+            }
+        }
+        stage('Push Docker Image') {
+            when {
+                // Execute this stage only if the branch is master
+                branch 'main'
+            }
+            steps {
+                // Push Docker image to Docker Hub
+                script {
+                    docker.withRegistry('https://registry.hub.docker.com', 'assignment1-dockerhub') {
+                        docker.image('my_model_image:latest').push('latest')
+                    }
+                }
+            }
+        }
+    }
+}
