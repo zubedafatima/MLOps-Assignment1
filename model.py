@@ -30,4 +30,3 @@ with open('model.pkl', 'wb') as file:
     pickle.dump(lr, file)
 
 print("Model created and saved into pickle file")
-
